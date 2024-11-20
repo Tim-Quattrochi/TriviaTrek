@@ -7,10 +7,25 @@
       content="width=device-width, initial-scale=1.0"
     />
     <link rel="stylesheet" href="styles.css" />
-    <title>TriviaTrek</title>
+    <title>TriviaTrek | Test your knowledge</title>
   </head>
   <body>
-    <h1 class="title">TriviaTrek</h1>
+    <header id="quizHeader">
+      <h1>TriviaTrek</h1>
+    </header>
+    <main>
+      <section id="quizContainer">
+        <div id="questionContainer">
+          <h2 id="questionText"></h2>
+          <ul id="answerOptions"></ul>
+        </div>
+        <button id="nextBtn">Next Question</button>
+        <section id="resultContainer" class="hidden">
+          <h2>Your Score: <span id="score"></span></h2>
+          <button id="restartBtn">Restart Quiz</button>
+        </section>
+      </section>
+    </main>
     <script src="main.js"></script>
   </body>
 </html>
