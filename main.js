@@ -88,16 +88,16 @@ nextButton.addEventListener("click", () => {
 });
 
 function showResults() {
-  resultContainer.style.display = "block";
+  resultContainer.classList.remove("hidden");
   scoreDisplay.textContent = score;
-  nextButton.style.display = "none";
+  nextButton.classList.add("hidden");
 }
 
 restartButton.addEventListener("click", () => {
   score = 0;
   currentQuestionIdx = 0;
-  resultContainer.style.display = "none";
-  nextButton.style.display = "inline-block";
+  resultContainer.classList.add("hidden");
+  nextButton.classList.remove("hidden");
   fetchQuestions();
 });
 
