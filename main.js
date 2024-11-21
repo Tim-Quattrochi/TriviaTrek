@@ -17,6 +17,7 @@ async function fetchQuestions() {
     if (res.status === 429) {
       questionText.textContent =
         "Too many requests, please try again later.";
+      nextButton.classList.add("hidden");
       return;
     }
     const data = await res.json();
@@ -68,5 +69,36 @@ function displayQuestion() {
     answerOptions.appendChild(li);
   });
 }
+
+function checkAnswer(selectedAnswer, correctAnswer) {
+  if (selectedAnswer === correctAnswer) {
+    score++;
+  }
+  nextButton.disabled = false;
+}
+
+nextButton.addEventListener("click", () => {
+  currentQuestionIdx++;
+  if (currentQuestionIdx < quizData.length) {
+    displayQuestion();
+  } else {
+    showResults();
+  }
+  nextButton.disabled = true;
+});
+
+function showResults() {
+  resultContainer.style.display = "block";
+  scoreDisplay.textContent = score;
+  nextButton.style.display = "none";
+}
+
+restartButton.addEventListener("click", () => {
+  score = 0;
+  currentQuestionIdx = 0;
+  resultContainer.style.display = "none";
+  nextButton.style.display = "inline-block";
+  fetchQuestions();
+});
 
 fetchQuestions();
